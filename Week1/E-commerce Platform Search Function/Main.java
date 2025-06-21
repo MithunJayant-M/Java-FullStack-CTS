@@ -5,22 +5,17 @@ class Product {
     int productId;
     String productName;
     String category;
-
     public Product(int productId, String productName, String category) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
     }
-
     @Override
     public String toString() {
         return "[" + productId + ", " + productName + ", " + category + "]";
     }
 }
-
 public class Main {
-
-    // Linear Search Implementation
     public static Product linearSearch(Product[] products, String targetName) {
         for (Product product : products) {
             if (product.productName.equalsIgnoreCase(targetName)) {
@@ -29,10 +24,7 @@ public class Main {
         }
         return null;
     }
-
-    // Binary Search Implementation
     public static Product binarySearch(Product[] products, String targetName) {
-        // Sort the array by productName (case-insensitive)
         Arrays.sort(products, Comparator.comparing(p -> p.productName.toLowerCase()));
 
         int left = 0, right = products.length - 1;
@@ -48,7 +40,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Sample product data
         Product[] products = {
             new Product(101, "Laptop", "Electronics"),
             new Product(102, "Shirt", "Clothing"),
@@ -58,12 +49,8 @@ public class Main {
         };
 
         String searchTerm = "Phone";
-
-        // Linear Search
         Product foundLinear = linearSearch(products, searchTerm);
         System.out.println("Linear Search Result: " + (foundLinear != null ? foundLinear : "Product not found"));
-
-        // Binary Search
         Product foundBinary = binarySearch(products, searchTerm);
         System.out.println("Binary Search Result: " + (foundBinary != null ? foundBinary : "Product not found"));
     }
